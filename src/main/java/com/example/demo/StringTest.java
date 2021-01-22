@@ -1,5 +1,10 @@
 package com.example.demo;
 
+import org.apache.commons.lang3.StringUtils;
+
+import java.util.*;
+import java.util.stream.Collectors;
+
 /**
  * @Author: bruce
  * @Version: V1.0
@@ -11,6 +16,17 @@ package com.example.demo;
 public class StringTest {
 
     public static void main(String[] args) {
+        //
+        String ids = "1,2,3,4";
+        List<String> arr = Arrays.asList(ids.split(","));
+        for (int i = 0 ; i < arr.size(); i++) {
+            if(StringUtils.equals(arr.get(i),"1")){
+                Collections.replaceAll(arr,"1","一级");
+            }
+        }
+        System.out.println("ids1 = " + arr.stream().collect(Collectors.joining(",")));
+
+
         String s = "qwertyuiop";
         if(checkDifferent(s)){
             System.out.println("存在重复的字符信息 = " );
