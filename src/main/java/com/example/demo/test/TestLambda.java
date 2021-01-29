@@ -392,6 +392,10 @@ public class TestLambda {
             log.error(e.getMessage());
         }
     }
+    /**
+     * 移除list中指定元素
+     * list.removeIf("测试2"::equals);
+     */
 
 
 }
