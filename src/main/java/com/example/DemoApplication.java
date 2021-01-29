@@ -1,5 +1,6 @@
 package com.example;
 
+import org.springframework.boot.Banner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
@@ -14,6 +15,9 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @SpringBootApplication(scanBasePackages = "com.example")
 public class DemoApplication {
     public static void main(String[] args) {
-        SpringApplication.run(DemoApplication.class,args);
+//        SpringApplication.run(DemoApplication.class,args);
+        SpringApplication application = new SpringApplication(DemoApplication.class);
+        application.setBannerMode(Banner.Mode.OFF);// 关闭启动项目时，banner图
+        application.run(args);
     }
 }
