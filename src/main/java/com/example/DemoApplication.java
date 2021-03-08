@@ -17,7 +17,7 @@ public class DemoApplication {
     public static void main(String[] args) {
 //        SpringApplication.run(DemoApplication.class,args);
         SpringApplication application = new SpringApplication(DemoApplication.class);
-        application.setBannerMode(Banner.Mode.OFF);// 关闭启动项目时，banner图
+//        application.setBannerMode(Banner.Mode.OFF);// 关闭启动项目时，banner图
         application.run(args);
     }
 }

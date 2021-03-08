@@ -2,6 +2,8 @@ package com.example.demo.test;
 
 import org.apache.commons.lang3.StringUtils;
 
+import java.util.Calendar;
+
 /**
  * @Author: bruce
  * @Version: V1.0
@@ -41,6 +43,12 @@ public class TestStringUtils {
         String removeEnd = StringUtils.removeEnd("123456", "456");
         /** 6789123******* 拼接字符串 */
         String concat = sub.concat(rightPad);
+
+        Calendar instance = Calendar.getInstance();
+        int year = instance.get(Calendar.YEAR);
+        System.out.println("year = " + year);
+        int month = instance.get(Calendar.MONTH);
+        System.out.println("month = " + month);
 
     }
 }

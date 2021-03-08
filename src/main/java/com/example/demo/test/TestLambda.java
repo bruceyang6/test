@@ -72,6 +72,13 @@ public class TestLambda {
         /*System.out.println(l.toString());
         List<Students> list = l.stream().filter(s -> s.getGrade().equals("五年级")).collect(Collectors.toList());
         System.out.println(list.toString());*/
+        List<Students> testCollection = list.stream().filter(s -> {
+            if (StringUtils.equals(s.getName(),"张三")) {
+                return false;
+            }
+            return true;
+        }).collect(toList());
+        System.out.println("testCollection = " + testCollection.toString());
         /**
          * 一、filter 方法使用
          */
