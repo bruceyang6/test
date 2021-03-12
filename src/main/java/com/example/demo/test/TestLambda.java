@@ -70,6 +70,7 @@ public class TestLambda {
          */
         List<Students> list = queryList();
         /*System.out.println(l.toString());
+        System.out.println("ss");
         List<Students> list = l.stream().filter(s -> s.getGrade().equals("五年级")).collect(Collectors.toList());
         System.out.println(list.toString());*/
         // 过滤掉姓名为张三的
