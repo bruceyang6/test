@@ -72,6 +72,7 @@ public class TestLambda {
         /*System.out.println(l.toString());
         List<Students> list = l.stream().filter(s -> s.getGrade().equals("五年级")).collect(Collectors.toList());
         System.out.println(list.toString());*/
+        // 过滤掉姓名为张三的
         List<Students> testCollection = list.stream().filter(s -> {
             if (StringUtils.equals(s.getName(),"张三")) {
                 return false;
