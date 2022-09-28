@@ -3,6 +3,7 @@ package com.example.demo.test;
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import com.example.demo.entity.Students;
+import com.example.demo.utils.MyTimeUtil;
 import lombok.Data;
 import lombok.ToString;
 import lombok.extern.slf4j.Slf4j;
@@ -55,6 +56,31 @@ public class TestLambda {
     }
 
     public static void main(String[] args) throws Exception{
+
+
+        MyTimeUtil.SECONDS.sleep(1);
+
+        String s11 = "4742355a-549f-4c2c-9760-a2885f217c46";
+        int length = s11.length();
+        System.out.println("length = " + length);
+
+        // 测试Iterator
+        List<Students> resultList = new ArrayList<>();
+        List<Students> students4 = new ArrayList<>(queryList());
+        List<Students> results = students4.stream().filter(s -> StringUtils.equals(s.getName(), "张三")).collect(toList());
+        Iterator<Students> iterator = students4.iterator();
+        while (iterator.hasNext()){
+            Students next1 = iterator.next();
+            if(StringUtils.equals(next1.getName(),"张三")){
+                resultList.add(next1);
+                iterator.remove();
+            }
+        }
+
+        System.out.println("测试结果："+results);
+        System.out.println("resultList = " + resultList);
+
+
         // 取字符串中的第一个
         List<Students> listt = queryList();
         String names = listt.stream().map(s -> s.getName()).filter(a -> StringUtils.isNotBlank(a)).distinct().collect(joining(","));
@@ -80,7 +106,9 @@ public class TestLambda {
             }
             return true;
         }).collect(toList());
+        List<Students> collection22 = list.stream().filter(s -> !StringUtils.equals(s.getName(), "张三")).collect(toList());
         System.out.println("testCollection = " + testCollection.toString());
+        System.out.println("collection22 = " + collection22.toString());
         /**
          * 一、filter 方法使用
          */
@@ -115,7 +143,8 @@ public class TestLambda {
         Map<Long, Students> listToMap = list.stream().collect(Collectors.toMap(Students::getId, s -> s,(k1,k2)->k1));
         log.info("listToMap = " + listToMap);
         /** 将list转换为map时，若有相同的key，则将value的值相加 */
-        Map<String, BigDecimal> collect1 = list.stream().collect(toMap(Students::getName, Students::getBookAmount, BigDecimal::add));
+        Map<String, Double> collect1 = list.stream().collect(toMap(Students::getName, Students::getTuitioin, Double::sum));
+        Map<String, BigDecimal> collect11 = list.stream().collect(toMap(Students::getName, Students::getBookAmount, BigDecimal::add));
         /** 将list转换为map时，若有相同的key(k1==k2)，则取k1的值 */
         Map<String, BigDecimal> collect2 = list.stream().collect(toMap(Students::getName, Students::getBookAmount, (k1,k2)->k1));
 
@@ -200,6 +229,11 @@ public class TestLambda {
         list.stream().sorted(Comparator.comparing(Students::getAge)).collect(Collectors.toList()).forEach(System.out::println);
         // 根据ID反向排序
         list.stream().sorted(Comparator.comparingLong(Students::getId).reversed()).collect(Collectors.toList()).forEach(System.out::println);
+
+        // 获取list中前三条数据,包前不包后
+        list.subList(0,3);
+        // 前6条
+        list.subList(0,6);
         /**
          * 五、max min average 方法使用
          */

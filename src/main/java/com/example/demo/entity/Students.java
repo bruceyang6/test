@@ -19,6 +19,7 @@ public class Students {
     /** 出生年月 */
     private Date birthday;
 
+    /** 学费 */
     private Double tuitioin;
 
     /** 书本费 */
@@ -121,6 +122,7 @@ public class Students {
                 ", grade='" + grade + '\'' +
                 ", birthday=" + birthday +
                 ", tuitioin=" + tuitioin +
+                ", bookAmount=" + bookAmount +
                 '}';
     }
 }
