@@ -200,6 +200,7 @@ public class TestLambda {
             Stream<Students> stream = s.stream();
             return stream;
         }).collect(Collectors.toList());
+
         System.out.println("studentsAll2 = " + studentsAll2);
 
         List<Long> listFlatLong = listFlat.stream().flatMap(s -> s.stream())
